@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://c1t1l15w4gngr"]
+[gd_scene load_steps=4 format=3 uid="uid://c1t1l15w4gngr"]
+
+[ext_resource type="Script" uid="uid://bk5lxrkcrystu" path="res://GameNodes/hud.gd" id="1_cng81"]
+[ext_resource type="Texture2D" uid="uid://ljnccgft586o" path="res://Sprites/HUD/off.png" id="1_rkda4"]
+[ext_resource type="Texture2D" uid="uid://cc57o56lfd4lg" path="res://Sprites/HUD/on.png" id="2_cng81"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_cng81")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 2
+offset_left = 1623.0
+offset_top = 607.0
+offset_right = 2823.0
+offset_bottom = 1807.0
+toggle_mode = true
+texture_normal = ExtResource("1_rkda4")
+texture_pressed = ExtResource("2_cng81")
+
+[connection signal="toggled" from="Control/TextureButton" to="." method="_on_texture_button_toggled"]
