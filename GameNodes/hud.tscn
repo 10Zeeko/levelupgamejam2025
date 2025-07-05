@@ -22,7 +22,7 @@ offset_top = 607.0
 offset_right = 2823.0
 offset_bottom = 1807.0
 toggle_mode = true
-texture_normal = ExtResource("1_rkda4")
-texture_pressed = ExtResource("2_cng81")
+texture_normal = ExtResource("2_cng81")
+texture_pressed = ExtResource("1_rkda4")
 
 [connection signal="toggled" from="Control/TextureButton" to="." method="_on_texture_button_toggled"]
