@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://gyxfuheccwcr"]
+
+[sub_resource type="GDScript" id="GDScript_rtxln"]
+resource_name = "LevelTimer"
+script/source = "extends Node2D
+
+@onready var time_bar: Line2D = $TimeBar
+@onready var timer: Timer = $TimeBar/Timer
+@export var timer_time: float
+
+func start_timer():
+	decrease_timer()
+	timer.wait_time = timer_time
+	timer.start()
+	
+func restart_timer():
+	time_bar.points = PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.0, 200.0)])
+	timer.stop()
+
+func decrease_timer():
+	var tw = create_tween()
+	tw.tween_property(
+		time_bar,
+		\"points\",
+		PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.0, 0.0)]),
+		timer_time
+	)
+
+func _on_timer_timeout() -> void:
+	get_tree().reload_current_scene()
+"
+
+[node name="LevelTimer" type="Node2D"]
+script = SubResource("GDScript_rtxln")
+timer_time = 10.0
+
+[node name="TimeBar" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 200)
+width = 20.0
+default_color = Color(0.945797, 0.265179, 0.26427, 1)
+
+[node name="Timer" type="Timer" parent="TimeBar"]
+one_shot = true
+
+[connection signal="timeout" from="TimeBar/Timer" to="." method="_on_timer_timeout"]

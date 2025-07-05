@@ -1,10 +1,68 @@
-[gd_scene load_steps=8 format=3 uid="uid://douef0hekdqu1"]
+[gd_scene load_steps=11 format=3 uid="uid://douef0hekdqu1"]
 
 [ext_resource type="Script" uid="uid://1jgm8oa1oprg" path="res://GameNodes/Player/player_controller.gd" id="1_3u5yd"]
 [ext_resource type="Texture2D" uid="uid://dmdegriu52y84" path="res://Sprites/Player/player-sheet.png" id="1_wog3g"]
+[ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="2_8hkdc"]
+[ext_resource type="Texture2D" uid="uid://dawbhgu212k05" path="res://Sprites/Player/player-eyes-sheet.png" id="3_tndex"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u5yd"]
-size = Vector2(12, 9)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u5yd"]
+radius = 4.75
+height = 10.5
+
+[sub_resource type="Animation" id="Animation_tndex"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyesSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8hkdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyesSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_3u5yd"]
 resource_name = "Walk"
@@ -22,36 +80,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-
-[sub_resource type="Animation" id="Animation_8hkdc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyesSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_tndex"]
-resource_name = "Idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tndex"]
@@ -61,21 +100,32 @@ _data = {
 &"Walk": SubResource("Animation_3u5yd")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tndex"]
+shader = ExtResource("2_8hkdc")
+
 [node name="player_controller" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_3u5yd")
+playerSheet = ExtResource("1_wog3g")
+eyesSheet = ExtResource("3_tndex")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wog3g")
 hframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_3u5yd")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3u5yd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_tndex")
 }
+
+[node name="EyesSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tndex")
+texture = ExtResource("3_tndex")
+hframes = 4
 
 [connection signal="ready" from="." to="." method="_on_ready"]

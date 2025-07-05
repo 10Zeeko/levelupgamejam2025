@@ -1,4 +1,6 @@
 extends CharacterBody2D
+@export var playerSheet : CompressedTexture2D
+@export var eyesSheet : CompressedTexture2D
 
 var SPEED = 300.0
 const ACCEL = 12.0
@@ -13,6 +15,7 @@ enum State{
 
 var current_state = State.IDLE
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var eyes_sprite: Sprite2D = $EyesSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func get_input():
@@ -25,6 +28,7 @@ func get_input():
 		current_state = State.RUN
 	if input.x != 0:
 		sprite_2d.flip_h = input.x < 0
+		eyes_sprite.flip_h = input.x < 0
 	
 	return input.normalized()
 
@@ -47,3 +51,9 @@ func _process(delta: float):
 			SPEED = 500.0
 	
 	move_and_slide()
+
+func enter_dark_mode():
+	sprite_2d.texture = eyesSheet
+
+func enter_light_mode():
+	sprite_2d.texture = playerSheet

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctmeqa0nf5mca"]
+
+[ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="1_dg643"]
+
+[sub_resource type="GDScript" id="GDScript_dg643"]
+script/source = "extends Area2D
+@export var hud : CanvasLayer
+
+func _on_body_entered(body: Node2D) -> void:
+	hud.show_hud()
+
+func _on_body_exited(body: Node2D) -> void:
+	hud.hide_hud()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg643"]
+radius = 28.0011
+
+[node name="Switch" type="Area2D"]
+scale = Vector2(4, 4)
+script = SubResource("GDScript_dg643")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 6.5)
+shape = SubResource("CircleShape2D_dg643")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.805, -2)
+texture = ExtResource("1_dg643")
+hframes = 57
+vframes = 31
+frame = 956
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
