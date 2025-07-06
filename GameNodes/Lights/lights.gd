@@ -1,6 +1,12 @@
 extends Node2D
 
 @onready var directional_light_2d: DirectionalLight2D = $DirectionalLight2D
+@export var switch_run_label : Label
 
 func _on_canvas_layer_lights_signal() -> void:
 	directional_light_2d.energy = $HUD_Switch.changeLight
+	if switch_run_label != null:
+		if switch_run_label.visible:
+			switch_run_label.visible = false
+		else:
+			switch_run_label.visible = true

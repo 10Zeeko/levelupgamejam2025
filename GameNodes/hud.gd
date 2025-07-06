@@ -7,6 +7,9 @@ extends CanvasLayer
 
 signal lightsSignal
 
+func _ready() -> void:
+	hide_hud()
+
 func _on_texture_button_toggled(toggled_on: bool) -> void:
 	changeLight = toggled_on
 	lightsSignal.emit()

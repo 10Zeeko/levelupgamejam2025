@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 1623.0
 offset_top = 607.0

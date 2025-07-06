@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://p7pse3p6f4if"]
+[gd_scene load_steps=23 format=4 uid="uid://p7pse3p6f4if"]
 
 [ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_jv6wh"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="4_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="5_iacmt"]
 [ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_maf8m"]
+[ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="8_huasi"]
+[ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="9_m1efj"]
+[ext_resource type="Texture2D" uid="uid://crd4j8qr1lk1c" path="res://Sprites/Fonts/keyboard_shift.png" id="10_mai8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l7je"]
 texture = ExtResource("1_52fb6")
@@ -1190,8 +1193,25 @@ fill = 1
 fill_from = Vector2(0.478632, 0.482906)
 fill_to = Vector2(0.470085, 0.923077)
 
-[node name="MainScene" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_m1efj"]
+font = ExtResource("8_huasi")
+font_size = 64
+font_color = Color(0.124955, 0.421591, 0.407698, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mai8y"]
+shader = ExtResource("9_m1efj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_76v2p"]
+font = ExtResource("8_huasi")
+font_size = 64
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76v2p"]
+shader = ExtResource("9_m1efj")
+
+[node name="MainScene" type="Node2D" node_paths=PackedStringArray("switch_run_label")]
 script = ExtResource("1_jv6wh")
+switch_run_label = NodePath("Tutorial2_Label")
 
 [node name="Walls & Ground" type="TileMapLayer" parent="."]
 z_index = -3
@@ -1213,6 +1233,7 @@ energy = 0.0
 blend_mode = 1
 
 [node name="player_controller" parent="." instance=ExtResource("5_iacmt")]
+z_index = 2
 position = Vector2(227, 238)
 
 [node name="Switch" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("7_maf8m")]
@@ -1229,5 +1250,66 @@ position = Vector2(1506, 870)
 scale = Vector2(3, 3)
 energy = 0.6
 texture = SubResource("GradientTexture2D_huasi")
+
+[node name="Tutorial_Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 544.0
+offset_top = 352.0
+offset_right = 1120.0
+offset_bottom = 864.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "It's time to go to sleep
+
+Don't forget to 
+turn off the lights."
+label_settings = SubResource("LabelSettings_m1efj")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tutorial2_Label" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.745098)
+material = SubResource("ShaderMaterial_mai8y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 544.0
+offset_top = 352.0
+offset_right = 1120.0
+offset_bottom = 864.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RUN
+
+with
+
+
+"
+label_settings = SubResource("LabelSettings_76v2p")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial2_Label"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("ShaderMaterial_76v2p")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.75
+offset_top = 8.0
+offset_right = 0.25
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("10_mai8y")
 
 [connection signal="lightsSignal" from="HUD_Switch" to="." method="_on_canvas_layer_lights_signal"]

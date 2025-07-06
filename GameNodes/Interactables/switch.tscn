@@ -5,9 +5,12 @@
 [sub_resource type="GDScript" id="GDScript_dg643"]
 script/source = "extends Area2D
 @export var hud : CanvasLayer
+@onready var player_controller: CharacterBody2D = $\"../player_controller\"
+
 
 func _on_body_entered(body: Node2D) -> void:
-	hud.show_hud()
+	if body == player_controller:
+		hud.show_hud()
 
 func _on_body_exited(body: Node2D) -> void:
 	hud.hide_hud()
