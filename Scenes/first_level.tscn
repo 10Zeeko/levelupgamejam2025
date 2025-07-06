@@ -1,19 +1,16 @@
-[gd_scene load_steps=24 format=4 uid="uid://p7pse3p6f4if"]
+[gd_scene load_steps=17 format=4 uid="uid://b23pnbay20vj3"]
 
-[ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="1_52fb6"]
-[ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_jv6wh"]
-[ext_resource type="PackedScene" uid="uid://c1t1l15w4gngr" path="res://GameNodes/hud.tscn" id="2_6l7je"]
-[ext_resource type="Texture2D" uid="uid://b4ejjtdt1un6s" path="res://Sprites/Tilesheets/roguelikeIndoor_transparent.png" id="3_x6ack"]
-[ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="4_6ev3c"]
-[ext_resource type="Script" uid="uid://bf4xt03ue3urf" path="res://GameNodes/Interactables/obstacles.gd" id="4_76v2p"]
-[ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="5_iacmt"]
-[ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_maf8m"]
-[ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="8_huasi"]
-[ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="9_m1efj"]
-[ext_resource type="Texture2D" uid="uid://crd4j8qr1lk1c" path="res://Sprites/Fonts/keyboard_shift.png" id="10_mai8y"]
+[ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_12jxe"]
+[ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="2_ogcqi"]
+[ext_resource type="Texture2D" uid="uid://b4ejjtdt1un6s" path="res://Sprites/Tilesheets/roguelikeIndoor_transparent.png" id="3_frdd2"]
+[ext_resource type="Script" uid="uid://bf4xt03ue3urf" path="res://GameNodes/Interactables/obstacles.gd" id="4_5074t"]
+[ext_resource type="PackedScene" uid="uid://c1t1l15w4gngr" path="res://GameNodes/hud.tscn" id="5_2sg85"]
+[ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="6_d6unp"]
+[ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_le5aa"]
+[ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="8_ofj4n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l7je"]
-texture = ExtResource("1_52fb6")
+texture = ExtResource("2_ogcqi")
 separation = Vector2i(1, 1)
 13:12/0 = 0
 13:12/0/terrain_set = 0
@@ -415,7 +412,7 @@ separation = Vector2i(1, 1)
 6:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iacmt"]
-texture = ExtResource("3_x6ack")
+texture = ExtResource("3_frdd2")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -929,7 +926,7 @@ sources/0 = SubResource("TileSetAtlasSource_6l7je")
 sources/1 = SubResource("TileSetAtlasSource_iacmt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6ack"]
-texture = ExtResource("3_x6ack")
+texture = ExtResource("3_frdd2")
 separation = Vector2i(1, 1)
 2:8/0 = 0
 2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -983,7 +980,7 @@ separation = Vector2i(1, 1)
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 8, -4, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ev3c"]
-texture = ExtResource("1_52fb6")
+texture = ExtResource("2_ogcqi")
 separation = Vector2i(1, 1)
 46:16/0 = 0
 46:15/0 = 0
@@ -1146,25 +1143,9 @@ fill = 1
 fill_from = Vector2(0.478632, 0.482906)
 fill_to = Vector2(0.470085, 0.923077)
 
-[sub_resource type="LabelSettings" id="LabelSettings_m1efj"]
-font = ExtResource("8_huasi")
-font_size = 64
-font_color = Color(0.124955, 0.421591, 0.407698, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mai8y"]
-shader = ExtResource("9_m1efj")
-
-[sub_resource type="LabelSettings" id="LabelSettings_76v2p"]
-font = ExtResource("8_huasi")
-font_size = 64
-font_color = Color(1, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_76v2p"]
-shader = ExtResource("9_m1efj")
-
 [node name="MainScene" type="Node2D" node_paths=PackedStringArray("switch_run_label")]
-script = ExtResource("1_jv6wh")
-switch_run_label = NodePath("Tutorial2_Label")
+script = ExtResource("1_12jxe")
+switch_run_label = NodePath("")
 
 [node name="Walls & Ground" type="TileMapLayer" parent="."]
 z_index = -3
@@ -1184,7 +1165,7 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAVAAYAAQAjAAkAAAAWAAYAAQAiAAkAAAAWAAcAAQAhAAkAAAAVAAcAAQAtAAsAAAAWAAgAAQAgAAkAAAAWAAUAAQAsAAoAAAAWAAQAAQAtAAsAAAAVAAUAAQAkAAkAAAA=")
 tile_set = SubResource("TileSet_iacmt")
 collision_enabled = false
-script = ExtResource("4_76v2p")
+script = ExtResource("4_5074t")
 player_controller = NodePath("../player_controller")
 
 [node name="ObstaclesArea2D" type="Area2D" parent="Obstacles"]
@@ -1193,22 +1174,22 @@ player_controller = NodePath("../player_controller")
 position = Vector2(356.515, 73.385)
 polygon = PackedVector2Array(-1.51501, -1.885, 8.48499, 0.114998, 9.73499, 68.615, -1.01501, 68.615, -17.515, 52.115, -17.015, 12.865)
 
-[node name="HUD_Switch" parent="." instance=ExtResource("2_6l7je")]
+[node name="HUD_Switch" parent="." instance=ExtResource("5_2sg85")]
 level_time = 4.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.0
 blend_mode = 1
 
-[node name="player_controller" parent="." instance=ExtResource("5_iacmt")]
+[node name="player_controller" parent="." instance=ExtResource("6_d6unp")]
 z_index = 2
 position = Vector2(227, 238)
 
-[node name="Switch" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("7_maf8m")]
+[node name="Switch" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("7_le5aa")]
 position = Vector2(139, 447)
 hud = NodePath("../HUD_Switch")
 
-[node name="Bed" parent="." instance=ExtResource("4_6ev3c")]
+[node name="Bed" parent="." instance=ExtResource("8_ofj4n")]
 z_index = -1
 position = Vector2(1472, 963)
 scale = Vector2(8, 8)
@@ -1218,67 +1199,6 @@ position = Vector2(1506, 870)
 scale = Vector2(3, 3)
 energy = 0.6
 texture = SubResource("GradientTexture2D_huasi")
-
-[node name="Tutorial_Label" type="Label" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 544.0
-offset_top = 352.0
-offset_right = 1120.0
-offset_bottom = 864.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "It's time to go to sleep
-
-Don't forget to 
-turn off the lights."
-label_settings = SubResource("LabelSettings_m1efj")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Tutorial2_Label" type="Label" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.745098)
-material = SubResource("ShaderMaterial_mai8y")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 544.0
-offset_top = 352.0
-offset_right = 1120.0
-offset_bottom = 864.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "RUN
-
-with
-
-
-"
-label_settings = SubResource("LabelSettings_76v2p")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Tutorial2_Label"]
-modulate = Color(1, 0, 0, 1)
-material = SubResource("ShaderMaterial_76v2p")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.75
-offset_top = 8.0
-offset_right = 0.25
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-texture = ExtResource("10_mai8y")
 
 [connection signal="body_entered" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_entered"]
 [connection signal="body_exited" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_exited"]

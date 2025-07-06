@@ -17,6 +17,7 @@ var current_state = State.IDLE
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var eyes_sprite: Sprite2D = $EyesSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+var slowed_player = false
 
 func get_input():
 	input.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -36,7 +37,6 @@ func _process(delta: float):
 	current_state = State.IDLE
 	
 	var playerInput = get_input()
-	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 	
 	match current_state:
 		State.IDLE:
@@ -50,6 +50,10 @@ func _process(delta: float):
 			animation_player.speed_scale = 1.5
 			SPEED = 500.0
 	
+	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
+	if slowed_player:
+		velocity = velocity/1.15
+	
 	move_and_slide()
 
 func enter_dark_mode():
@@ -57,3 +61,9 @@ func enter_dark_mode():
 
 func enter_light_mode():
 	sprite_2d.texture = playerSheet
+	
+func slow_player():
+	slowed_player = true
+
+func remove_effect_player():
+	slowed_player = false
