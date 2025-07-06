@@ -52,7 +52,7 @@ func _process(delta: float):
 	
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 	if slowed_player:
-		velocity = velocity/1.15
+		velocity = velocity/1.25
 	
 	move_and_slide()
 

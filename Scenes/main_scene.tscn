@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://p7pse3p6f4if"]
+[gd_scene load_steps=25 format=4 uid="uid://p7pse3p6f4if"]
 
 [ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_jv6wh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="5_iacmt"]
 [ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_maf8m"]
 [ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="8_huasi"]
+[ext_resource type="PackedScene" uid="uid://b23pnbay20vj3" path="res://Scenes/first_level.tscn" id="9_drdnd"]
 [ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="9_m1efj"]
 [ext_resource type="Texture2D" uid="uid://crd4j8qr1lk1c" path="res://Sprites/Fonts/keyboard_shift.png" id="10_mai8y"]
 
@@ -1212,6 +1213,7 @@ hud = NodePath("../HUD_Switch")
 z_index = -1
 position = Vector2(1472, 963)
 scale = Vector2(8, 8)
+next_level = ExtResource("9_drdnd")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1506, 870)
@@ -1283,3 +1285,4 @@ texture = ExtResource("10_mai8y")
 [connection signal="body_entered" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_entered"]
 [connection signal="body_exited" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_exited"]
 [connection signal="lightsSignal" from="HUD_Switch" to="." method="_on_canvas_layer_lights_signal"]
+[connection signal="lightsSignal" from="HUD_Switch" to="Bed" method="_on_hud_switch_lights_signal"]
