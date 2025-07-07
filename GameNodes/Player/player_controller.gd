@@ -1,11 +1,24 @@
 extends CharacterBody2D
+
 @export var playerSheet : CompressedTexture2D
 @export var eyesSheet : CompressedTexture2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var eyes_sprite: Sprite2D = $EyesSprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var SPEED = 300.0
 const ACCEL = 12.0
+const DASH_SPEED    = 1200.0
+const DASH_TIME     = 0.2
+const DASH_COOLDOWN = 1.0
 
-var input: Vector2
+var is_dashing     = false
+var dash_dir       = Vector2.ZERO
+var dash_timer     = 0.0
+var dash_cd_timer  = 0.0
+var original_mask  = self.collision_layer
+
+var input_dir: Vector2
 
 enum State{
 	IDLE,
@@ -14,27 +27,44 @@ enum State{
 }
 
 var current_state = State.IDLE
-@onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var eyes_sprite: Sprite2D = $EyesSprite
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 var slowed_player = false
-var dash_ready = false
+var dash_ready = true
 
 func get_input():
-	input.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	input.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
-	
+	input_dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	input_dir.y = Input.get_action_strength("Down")  - Input.get_action_strength("Up")
+	input_dir = input_dir.normalized()
+
 	if Input.get_action_strength("Walking"):
 		current_state = State.WALK
 	if Input.get_action_strength("Running"):
 		current_state = State.RUN
-	if input.x != 0:
-		sprite_2d.flip_h = input.x < 0
-		eyes_sprite.flip_h = input.x < 0
 	
-	return input.normalized()
+	if input_dir.x != 0:
+		sprite_2d.flip_h  = input_dir.x < 0
+		eyes_sprite.flip_h = input_dir.x < 0
+
+	# dash trigger
+	if Input.is_action_just_pressed("Dash") and dash_cd_timer <= 0 and not is_dashing:
+		start_dash()
+
+	return input_dir
 
 func _process(delta: float):
+	# cooldown ticker
+	if dash_cd_timer > 0:
+		dash_cd_timer -= delta
+
+	# handle active dash
+	if is_dashing:
+		dash_timer -= delta
+		velocity = dash_dir * DASH_SPEED
+		move_and_slide()
+
+		if dash_timer <= 0:
+			end_dash()
+		return
+	
 	current_state = State.IDLE
 	
 	var playerInput = get_input()
@@ -56,6 +86,25 @@ func _process(delta: float):
 		velocity = velocity/1.2
 	
 	move_and_slide()
+
+func start_dash():
+	# choose direction (fallback to facing)
+	if input_dir == Vector2.ZERO:
+		dash_dir = Vector2.LEFT  if sprite_2d.flip_h else Vector2.RIGHT
+	else:
+		dash_dir = input_dir
+	
+	is_dashing    = true
+	dash_timer    = DASH_TIME
+	dash_cd_timer = DASH_COOLDOWN
+
+	# ignore objects on Layer 3 (bit 2)
+	collision_mask &= ~(1 << 2)
+
+func end_dash():
+	is_dashing    = false
+	collision_mask = original_mask
+	velocity       = Vector2.ZERO
 
 func enter_dark_mode():
 	sprite_2d.texture = eyesSheet

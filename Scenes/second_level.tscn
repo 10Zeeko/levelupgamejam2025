@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dnlf5eqqqfayv"]
+[gd_scene load_steps=18 format=4 uid="uid://dnlf5eqqqfayv"]
 
 [ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_tcdtn"]
 [ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="2_e3jso"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="6_xjmhc"]
 [ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_xwdxo"]
 [ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="8_ff2d6"]
+[ext_resource type="PackedScene" uid="uid://lgknkmg5yuvw" path="res://Scenes/third_level.tscn" id="9_e3jso"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l7je"]
 texture = ExtResource("2_e3jso")
@@ -1212,6 +1213,7 @@ hud = NodePath("../HUD_Switch")
 z_index = -1
 position = Vector2(1472, 963)
 scale = Vector2(8, 8)
+next_level = ExtResource("9_e3jso")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1506, 870)

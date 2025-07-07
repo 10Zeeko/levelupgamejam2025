@@ -52,13 +52,13 @@ gradient = SubResource("Gradient_yhssl")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Ghost_Enemy" type="CharacterBody2D"]
+[node name="Ghost_Enemy" type="Area2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_yhssl")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5frjw")
-frame_progress = 0.549338
+frame_progress = 0.233589
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

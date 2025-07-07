@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dditk5ntc04v"]
+
+[ext_resource type="Texture2D" uid="uid://dbpqesva7gpei" path="res://Sprites/PowerUps/juice.png" id="1_nhyf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhyf6"]
+radius = 33.1361
+
+[node name="juice_power_up" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_nhyf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nhyf6")

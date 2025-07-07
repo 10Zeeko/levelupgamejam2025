@@ -4,7 +4,7 @@ extends Node2D
 @export var switch_run_label : Label
 
 func _on_canvas_layer_lights_signal() -> void:
-	directional_light_2d.energy = $HUD_Switch.changeLight
+	directional_light_2d.energy = 0.994 if $HUD_Switch.changeLight else 0
 	if switch_run_label != null:
 		if switch_run_label.visible:
 			switch_run_label.visible = false
