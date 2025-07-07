@@ -1,16 +1,17 @@
-[gd_scene load_steps=17 format=4 uid="uid://dnlf5eqqqfayv"]
+[gd_scene load_steps=18 format=4 uid="uid://lgknkmg5yuvw"]
 
-[ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_tcdtn"]
-[ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="2_e3jso"]
-[ext_resource type="Texture2D" uid="uid://b4ejjtdt1un6s" path="res://Sprites/Tilesheets/roguelikeIndoor_transparent.png" id="3_c8qdw"]
-[ext_resource type="Script" uid="uid://bf4xt03ue3urf" path="res://GameNodes/Interactables/obstacles.gd" id="4_gqrov"]
-[ext_resource type="PackedScene" uid="uid://c1t1l15w4gngr" path="res://GameNodes/hud.tscn" id="5_cin73"]
-[ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="6_xjmhc"]
-[ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_xwdxo"]
-[ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="8_ff2d6"]
+[ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_rurlc"]
+[ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="2_nfbmf"]
+[ext_resource type="Texture2D" uid="uid://b4ejjtdt1un6s" path="res://Sprites/Tilesheets/roguelikeIndoor_transparent.png" id="3_va8qn"]
+[ext_resource type="Script" uid="uid://bf4xt03ue3urf" path="res://GameNodes/Interactables/obstacles.gd" id="4_8rnfv"]
+[ext_resource type="PackedScene" uid="uid://c1t1l15w4gngr" path="res://GameNodes/hud.tscn" id="5_y58vr"]
+[ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="6_fkyqs"]
+[ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_3ktl5"]
+[ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="8_bca62"]
+[ext_resource type="PackedScene" uid="uid://dp3wlomvcq82h" path="res://GameNodes/Enemies/ghost_enemy.tscn" id="9_nfbmf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l7je"]
-texture = ExtResource("2_e3jso")
+texture = ExtResource("2_nfbmf")
 separation = Vector2i(1, 1)
 13:12/0 = 0
 13:12/0/terrain_set = 0
@@ -412,7 +413,7 @@ separation = Vector2i(1, 1)
 6:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iacmt"]
-texture = ExtResource("3_c8qdw")
+texture = ExtResource("3_va8qn")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -926,7 +927,7 @@ sources/0 = SubResource("TileSetAtlasSource_6l7je")
 sources/1 = SubResource("TileSetAtlasSource_iacmt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6ack"]
-texture = ExtResource("3_c8qdw")
+texture = ExtResource("3_va8qn")
 separation = Vector2i(1, 1)
 2:8/0 = 0
 2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -980,7 +981,7 @@ separation = Vector2i(1, 1)
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 8, -4, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ev3c"]
-texture = ExtResource("2_e3jso")
+texture = ExtResource("2_nfbmf")
 separation = Vector2i(1, 1)
 46:16/0 = 0
 46:15/0 = 0
@@ -1144,7 +1145,7 @@ fill_from = Vector2(0.478632, 0.482906)
 fill_to = Vector2(0.470085, 0.923077)
 
 [node name="MainScene" type="Node2D"]
-script = ExtResource("1_tcdtn")
+script = ExtResource("1_rurlc")
 
 [node name="Walls & Ground" type="TileMapLayer" parent="."]
 z_index = -3
@@ -1155,60 +1156,39 @@ tile_set = SubResource("TileSet_jv6wh")
 [node name="Decorations" type="TileMapLayer" parent="."]
 z_index = -2
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAABAAMAAAACAAgAAAABAAIAAAAAAAwAAAACAAIAAAADAAwAAAADAAIAAAAIAAwAAAAEAAIAAAAEAAwAAAAFAAIAAAAJAAwAAAADAAEAAAAWABAAAAAIAAgAAQAKABcAAAAJAAgAAQALABcAAAAKAAgAAQALABcAAAAKAAkAAQALABcAAAAJAAkAAQALABcAAAAIAAkAAQAKABcAAAAIAAcAAQAKABcAAAAJAAcAAQALABcAAAAKAAcAAQALABcAAAALAAcAAQALABcAAAALAAgAAQALABcAAAALAAkAAQALABcAAAAMAAkAAQALABcAAAAMAAgAAQALABcAAAANAAcAAQALABcAAAANAAgAAQALABcAAAANAAkAAQALABcAAAAOAAkAAQALABcAAAAOAAgAAQALABcAAAAOAAcAAQALABcAAAAMAAcAAQALABcAAAAPAAcAAQALABcAAAAQAAcAAQALABcAAAARAAcAAQAMABcAAAARAAkAAQAMABcAAAAQAAkAAQALABcAAAAPAAkAAQALABcAAAARAAgAAQAMABcAAAAQAAgAAQALABcAAAAPAAgAAQALABcAAAAIAAoAAQAKABcAAAAIAAsAAQAKABcAAAAIAAwAAQAKABcAAAAIAA0AAQAKABgAAAAJAA0AAQALABgAAAAKAA0AAQALABgAAAALAA0AAQALABgAAAAMAA0AAQALABgAAAANAA0AAQALABgAAAAOAA0AAQALABgAAAAPAA0AAQALABgAAAAQAA0AAQALABgAAAARAA0AAQAMABgAAAARAAwAAQAMABcAAAARAAsAAQAMABcAAAAQAAsAAQALABcAAAAQAAoAAQALABcAAAARAAoAAQAMABcAAAAPAAoAAQALABcAAAAPAAsAAQALABcAAAAQAAwAAQALABcAAAAPAAwAAQALABcAAAAOAAsAAQALABcAAAAOAAoAAQALABcAAAAOAAwAAQALABcAAAANAAsAAQALABcAAAANAAoAAQALABcAAAANAAwAAQALABcAAAAMAAwAAQALABcAAAAMAAsAAQALABcAAAAMAAoAAQALABcAAAALAAwAAQALABcAAAALAAsAAQALABcAAAAKAAsAAQALABcAAAAKAAoAAQALABcAAAALAAoAAQALABcAAAAKAAwAAQALABcAAAAJAAwAAQALABcAAAAJAAsAAQALABcAAAAJAAoAAQALABcAAAAHAAIAAQAtAA4AAAAIAAIAAQAvAA4AAAAJAAIAAQAvAAwAAAAKAAIAAQAvAA4AAAAPAAIAAQAgAAEAAAALAAIAAQAvAA0AAAAMAAIAAQAvAAwAAAANAAIAAQAyAAwAAAARAAIAAQAtAA4AAAASAAIAAQAvAA0AAAATAAIAAQAvAA4AAAAUAAIAAQAyAA0AAAAWAAIAAQAcAAQAAAAWAAEAAQAcAAMAAAAIAAYAAQAKABcAAAAJAAYAAQALABcAAAAKAAYAAQALABcAAAALAAYAAQALABcAAAAMAAYAAQALABcAAAANAAYAAQALABcAAAAOAAYAAQALABcAAAAPAAYAAQALABcAAAAQAAYAAQALABcAAAARAAYAAQAMABcAAAAIAAUAAQAKABYAAAAJAAUAAQALABYAAAAKAAUAAQALABYAAAALAAUAAQALABYAAAAMAAUAAQALABYAAAANAAUAAQALABYAAAAOAAUAAQALABYAAAAPAAUAAQALABYAAAAQAAUAAQALABYAAAARAAUAAQAMABYAAAAKAAEAAQAaAAgAAAAXAA0AAQA2AA0AAAADAA0AAAADAAAAAAAEAA0AAAAEAAAAAAADAA4AAAABAAQAAAAEAA4AAAABAAQAAAADAAwAAAAAAAQAAAAEAAwAAAAAAAQAAAATAA8AAQA2AA0AAAAOAA8AAQA2AA0AAAAJAA8AAQA2AA0AAAA=")
+tile_map_data = PackedByteArray("AAABAAMAAAACAAgAAAABAAIAAAAAAAwAAAACAAIAAAADAAwAAAADAAIAAAAIAAwAAAAEAAIAAAAEAAwAAAAFAAIAAAAJAAwAAAADAAEAAAAWABAAAAAIAAgAAQAKABcAAAAJAAgAAQALABcAAAAKAAgAAQALABcAAAAKAAkAAQALABcAAAAJAAkAAQALABcAAAAIAAkAAQAKABcAAAAIAAcAAQAKABcAAAAJAAcAAQALABcAAAAKAAcAAQALABcAAAALAAcAAQALABcAAAALAAgAAQALABcAAAALAAkAAQALABcAAAAMAAkAAQALABcAAAAMAAgAAQALABcAAAANAAcAAQALABcAAAANAAgAAQALABcAAAANAAkAAQALABcAAAAOAAkAAQALABcAAAAOAAgAAQALABcAAAAOAAcAAQALABcAAAAMAAcAAQALABcAAAAPAAcAAQALABcAAAAQAAcAAQALABcAAAARAAcAAQAMABcAAAARAAkAAQAMABcAAAAQAAkAAQALABcAAAAPAAkAAQALABcAAAARAAgAAQAMABcAAAAQAAgAAQALABcAAAAPAAgAAQALABcAAAAIAAoAAQAKABcAAAAIAAsAAQAKABcAAAAIAAwAAQAKABcAAAAIAA0AAQAKABgAAAAJAA0AAQALABgAAAAKAA0AAQALABgAAAALAA0AAQALABgAAAAMAA0AAQALABgAAAANAA0AAQALABgAAAAOAA0AAQALABgAAAAPAA0AAQALABgAAAAQAA0AAQALABgAAAARAA0AAQAMABgAAAARAAwAAQAMABcAAAARAAsAAQAMABcAAAAQAAsAAQALABcAAAAQAAoAAQALABcAAAARAAoAAQAMABcAAAAPAAoAAQALABcAAAAPAAsAAQALABcAAAAQAAwAAQALABcAAAAPAAwAAQALABcAAAAOAAsAAQALABcAAAAOAAoAAQALABcAAAAOAAwAAQALABcAAAANAAsAAQALABcAAAANAAoAAQALABcAAAANAAwAAQALABcAAAAMAAwAAQALABcAAAAMAAsAAQALABcAAAAMAAoAAQALABcAAAALAAwAAQALABcAAAALAAsAAQALABcAAAAKAAsAAQALABcAAAAKAAoAAQALABcAAAALAAoAAQALABcAAAAKAAwAAQALABcAAAAJAAwAAQALABcAAAAJAAsAAQALABcAAAAJAAoAAQALABcAAAAHAAIAAQAtAA4AAAAIAAIAAQAvAA4AAAAJAAIAAQAvAAwAAAAKAAIAAQAvAA4AAAAPAAIAAQAgAAEAAAALAAIAAQAvAA0AAAAMAAIAAQAvAAwAAAANAAIAAQAyAAwAAAARAAIAAQAtAA4AAAASAAIAAQAvAA0AAAATAAIAAQAvAA4AAAAUAAIAAQAyAA0AAAAWAAIAAQAcAAQAAAAWAAEAAQAcAAMAAAAIAAYAAQAKABcAAAAJAAYAAQALABcAAAAKAAYAAQALABcAAAALAAYAAQALABcAAAAMAAYAAQALABcAAAANAAYAAQALABcAAAAOAAYAAQALABcAAAAPAAYAAQALABcAAAAQAAYAAQALABcAAAARAAYAAQAMABcAAAAIAAUAAQAKABYAAAAJAAUAAQALABYAAAAKAAUAAQALABYAAAALAAUAAQALABYAAAAMAAUAAQALABYAAAANAAUAAQALABYAAAAOAAUAAQALABYAAAAPAAUAAQALABYAAAAQAAUAAQALABYAAAARAAUAAQAMABYAAAAKAAEAAQAaAAgAAAAXAA0AAQA2AA0AAAADAA0AAAADAAAAAAAEAA0AAAAEAAAAAAADAA4AAAABAAQAAAAEAA4AAAABAAQAAAADAAwAAAAAAAQAAAAEAAwAAAAAAAQAAAA=")
 tile_set = SubResource("TileSet_iacmt")
 
 [node name="Obstacles" type="TileMapLayer" parent="." node_paths=PackedStringArray("player_controller")]
 z_index = -2
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAIAAoAAQAiAAkAAAAJAAoAAQAgAAkAAAAKAAoAAQAgAAkAAAAKAA8AAQAtAAoAAAAKAA4AAQAiAAkAAAAKAA0AAQAtAAoAAAAKAAwAAQAsAAoAAAAKAAsAAQAtAAoAAAAJAA4AAQAjAAkAAAAJAA0AAQAjAAkAAAAJAAwAAQAgAAkAAAAJAAsAAQAiAAkAAAAIAA8AAQAiAAkAAAAIAA4AAQAiAAkAAAAIAA0AAQAhAAkAAAAIAAwAAQAtAAoAAAAIAAsAAQAjAAkAAAAKAAcAAQAiAAkAAAAKAAYAAQAsAAoAAAAKAAUAAQAgAAkAAAAKAAQAAQAhAAkAAAAKAAMAAQAsAAoAAAAJAAcAAQAkAAkAAAAJAAYAAQAgAAkAAAAJAAUAAQAkAAkAAAAJAAQAAQAgAAkAAAAJAAMAAQAjAAkAAAAIAAcAAQAjAAkAAAAIAAYAAQAjAAkAAAAIAAUAAQAgAAkAAAAIAAQAAQAiAAkAAAAIAAMAAQAtAAsAAAAKAAkAAQAiAAkAAAAJAAkAAQAhAAkAAAAIAAkAAQAjAAkAAAAPAAMAAQAjAAkAAAAOAAMAAQAjAAkAAAANAAMAAQAtAAsAAAAPAA8AAQAjAAkAAAAPAA4AAQAtAAsAAAAPAAoAAQAiAAkAAAAPAAkAAQAtAAsAAAAPAAgAAQAgAAkAAAAOAA4AAQAgAAkAAAAOAA0AAQAkAAkAAAAOAAwAAQAgAAkAAAAOAAsAAQAgAAkAAAAOAAoAAQAhAAkAAAAOAAkAAQAsAAoAAAAOAAgAAQAkAAkAAAANAA8AAQAiAAkAAAANAA4AAQAgAAkAAAANAAoAAQAkAAkAAAANAAkAAQAgAAkAAAANAAgAAQAhAAkAAAAUAA8AAQAiAAkAAAAUAA4AAQAkAAkAAAATAA4AAQAhAAkAAAASAA8AAQAtAAsAAAASAA4AAQAiAAkAAAAUAAoAAQAjAAkAAAAUAAkAAQAkAAkAAAAUAAgAAQAsAAoAAAAUAAcAAQAiAAkAAAAUAAYAAQAiAAkAAAAUAAUAAQAjAAkAAAAUAAQAAQAgAAkAAAAUAAMAAQAtAAsAAAATAAoAAQAiAAkAAAATAAkAAQAgAAkAAAATAAgAAQAkAAkAAAATAAcAAQAiAAkAAAATAAYAAQAhAAkAAAATAAUAAQAiAAkAAAATAAQAAQAhAAkAAAATAAMAAQAiAAkAAAASAAoAAQAkAAkAAAASAAkAAQAkAAkAAAASAAgAAQAtAAsAAAASAAcAAQAtAAsAAAASAAYAAQAsAAoAAAASAAUAAQAhAAkAAAASAAQAAQAjAAkAAAASAAMAAQAgAAkAAAAPAAcAAQAjAAkAAAAPAAYAAQAtAAsAAAAOAAcAAQAtAAsAAAAOAAYAAQAjAAkAAAANAAcAAQAkAAkAAAANAAYAAQAkAAkAAAA=")
 tile_set = SubResource("TileSet_iacmt")
 collision_enabled = false
-script = ExtResource("4_gqrov")
+script = ExtResource("4_8rnfv")
 player_controller = NodePath("../player_controller")
 
 [node name="ObstaclesArea2D" type="Area2D" parent="Obstacles"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(161.75, 57.5)
+position = Vector2(149.25, -74.5)
 polygon = PackedVector2Array(11, -10.75, 10.5, 66.75, -31.5, 68, -32.25, -10.25)
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(241, 12.75)
-polygon = PackedVector2Array(11.25, 35.5, 11.75, 50.75, -31.25, 52.75, -30.25, 35.5)
-
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(321.25, 194)
-polygon = PackedVector2Array(11.25, 35.5, 10.5, 66.75, -31.5, 68, -30.25, 35.5)
-
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(241.5, 190.5)
-polygon = PackedVector2Array(11.25, 35.5, 10.5, 66.75, -31.5, 68, -30.25, 35.5, -15.2926, 35.5, -15.5, -16.75, -29.5, -17.5, -30, -88.5, 13, -89, 11.75, -17.25, -3.25, -17, -3.33453, 35.5)
-
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(320.25, 10)
-polygon = PackedVector2Array(13.5, 35.5, 13.25, 164.25, -30.25, 163.5, -30.25, 35.5)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(162.25, 190.25)
-polygon = PackedVector2Array(11.5, -39, 10.5, 66.75, -31.5, 68, -31, -37.25)
-
-[node name="HUD_Switch" parent="." instance=ExtResource("5_cin73")]
+[node name="HUD_Switch" parent="." instance=ExtResource("5_y58vr")]
 level_time = 3.5
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.0
+energy = 0.98
 blend_mode = 1
 
-[node name="player_controller" parent="." instance=ExtResource("6_xjmhc")]
+[node name="player_controller" parent="." instance=ExtResource("6_fkyqs")]
 z_index = 2
 position = Vector2(227, 238)
 
-[node name="Switch" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("7_xwdxo")]
+[node name="Switch" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("7_3ktl5")]
 position = Vector2(139, 447)
 hud = NodePath("../HUD_Switch")
 
-[node name="Bed" parent="." instance=ExtResource("8_ff2d6")]
+[node name="Bed" parent="." instance=ExtResource("8_bca62")]
 z_index = -1
 position = Vector2(1472, 963)
 scale = Vector2(8, 8)
@@ -1219,25 +1199,12 @@ scale = Vector2(3, 3)
 energy = 0.6
 texture = SubResource("GradientTexture2D_huasi")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(1250, 997)
-scale = Vector2(3, 3)
-energy = 0.6
-texture = SubResource("GradientTexture2D_huasi")
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-position = Vector2(932, 997)
-scale = Vector2(3, 3)
-energy = 0.6
-texture = SubResource("GradientTexture2D_huasi")
-
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-position = Vector2(611, 997)
-scale = Vector2(3, 3)
-energy = 0.6
-texture = SubResource("GradientTexture2D_huasi")
+[node name="Ghost_Enemy" parent="." node_paths=PackedStringArray("player_controller") instance=ExtResource("9_nfbmf")]
+position = Vector2(338, 608)
+player_controller = NodePath("../player_controller")
 
 [connection signal="body_entered" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_entered"]
 [connection signal="body_exited" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_exited"]
 [connection signal="lightsSignal" from="HUD_Switch" to="." method="_on_canvas_layer_lights_signal"]
 [connection signal="lightsSignal" from="HUD_Switch" to="Bed" method="_on_hud_switch_lights_signal"]
+[connection signal="lightsSignal" from="HUD_Switch" to="Ghost_Enemy" method="_on_hud_switch_lights_signal"]

@@ -18,6 +18,7 @@ var current_state = State.IDLE
 @onready var eyes_sprite: Sprite2D = $EyesSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var slowed_player = false
+var dash_ready = false
 
 func get_input():
 	input.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -52,7 +53,7 @@ func _process(delta: float):
 	
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 	if slowed_player:
-		velocity = velocity/1.25
+		velocity = velocity/1.2
 	
 	move_and_slide()
 

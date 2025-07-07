@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dp3wlomvcq82h"]
+
+[ext_resource type="Texture2D" uid="uid://bm0m7frt3v7ij" path="res://Sprites/Player/ghost-sheet.png" id="1_mftk3"]
+[ext_resource type="Script" uid="uid://d373tx345irw2" path="res://GameNodes/Enemies/ghost_enemy.gd" id="1_yhssl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhssl"]
+atlas = ExtResource("1_mftk3")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kkdd"]
+atlas = ExtResource("1_mftk3")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6cek"]
+atlas = ExtResource("1_mftk3")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bkjj"]
+atlas = ExtResource("1_mftk3")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5frjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhssl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kkdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6cek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bkjj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vg3uv"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="Gradient" id="Gradient_yhssl"]
+offsets = PackedFloat32Array(0, 0.638614)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6kkdd"]
+gradient = SubResource("Gradient_yhssl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Ghost_Enemy" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_yhssl")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5frjw")
+frame_progress = 0.549338
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vg3uv")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.788235, 0.458824, 0.933333, 1)
+texture = SubResource("GradientTexture2D_6kkdd")
+texture_scale = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
