@@ -1347,7 +1347,7 @@ position = Vector2(280, 159.5)
 shape = SubResource("RectangleShape2D_8rnfv")
 
 [node name="HUD_Switch" parent="." instance=ExtResource("5_y58vr")]
-level_time = 20.0
+level_time = 6.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.0
@@ -1376,6 +1376,7 @@ texture = SubResource("GradientTexture2D_huasi")
 [node name="Ghost_Enemy" parent="." node_paths=PackedStringArray("player_controller") instance=ExtResource("9_nfbmf")]
 position = Vector2(-599, 450)
 player_controller = NodePath("../player_controller")
+delay = 0.2
 
 [node name="Tutorial_Label" type="Label" parent="."]
 anchors_preset = 15
@@ -1411,6 +1412,10 @@ texture = ExtResource("11_8rnfv")
 
 [node name="juice_power_up" parent="." node_paths=PackedStringArray("player_controller") instance=ExtResource("12_y58vr")]
 position = Vector2(1506, 538)
+player_controller = NodePath("../player_controller")
+
+[node name="juice_power_up2" parent="." node_paths=PackedStringArray("player_controller") instance=ExtResource("12_y58vr")]
+position = Vector2(1135, 874)
 player_controller = NodePath("../player_controller")
 
 [connection signal="body_entered" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_entered"]

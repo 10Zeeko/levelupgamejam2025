@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 1600.0
 offset_top = 696.0
 offset_right = 2800.0

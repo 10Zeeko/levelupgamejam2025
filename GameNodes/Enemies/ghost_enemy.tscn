@@ -64,11 +64,15 @@ speed_scale = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vg3uv")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="MoveTimer" type="Timer" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.788235, 0.458824, 0.933333, 1)
 texture = SubResource("GradientTexture2D_6kkdd")
 texture_scale = 2.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="RecordTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="RecordTimer" to="." method="_on_record_timer_timeout"]
