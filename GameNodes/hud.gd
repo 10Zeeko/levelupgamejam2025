@@ -13,6 +13,7 @@ func _ready() -> void:
 func _on_texture_button_toggled(toggled_on: bool) -> void:
 	changeLight = toggled_on
 	lightsSignal.emit()
+	texture_button.disabled = true
 	if toggled_on:
 		level_timer.timer_time = level_time
 		level_timer.start_timer()

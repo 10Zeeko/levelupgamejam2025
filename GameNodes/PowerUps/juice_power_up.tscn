@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dditk5ntc04v"]
+[gd_scene load_steps=7 format=3 uid="uid://dditk5ntc04v"]
 
 [ext_resource type="Texture2D" uid="uid://dbpqesva7gpei" path="res://Sprites/PowerUps/juice.png" id="1_nhyf6"]
+[ext_resource type="Script" uid="uid://caevpd2pwpin7" path="res://GameNodes/PowerUps/juice_power_up.gd" id="1_v5m4c"]
+[ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="2_7rh51"]
+[ext_resource type="Texture2D" uid="uid://bl5kfig2y1f7j" path="res://Sprites/PowerUps/particle.png" id="2_h8rfk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhyf6"]
 radius = 33.1361
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5m4c"]
+shader = ExtResource("2_7rh51")
+
 [node name="juice_power_up" type="Area2D"]
+script = ExtResource("1_v5m4c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -13,3 +20,15 @@ texture = ExtResource("1_nhyf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nhyf6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_v5m4c")
+amount = 3
+texture = ExtResource("2_h8rfk")
+lifetime = 0.34
+emission_shape = 1
+emission_sphere_radius = 24.0
+gravity = Vector2(0, -980)
+color = Color(1, 0.705882, 0, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

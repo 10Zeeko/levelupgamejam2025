@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfmuwmntvo2vr"]
+
+[ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_x8ela"]
+[ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="10_2eyyo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8rnfv"]
+font = ExtResource("10_2eyyo")
+font_size = 64
+font_color = Color(0.124955, 0.421591, 0.407698, 1)
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_x8ela")
+
+[node name="Tutorial_Label" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 1
+text = "End of the game"
+label_settings = SubResource("LabelSettings_8rnfv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

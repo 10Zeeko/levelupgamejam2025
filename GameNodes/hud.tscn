@@ -17,15 +17,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-offset_left = 1623.0
-offset_top = 607.0
-offset_right = 2823.0
-offset_bottom = 1807.0
+offset_left = 1600.0
+offset_top = 696.0
+offset_right = 2800.0
+offset_bottom = 1896.0
+scale = Vector2(4, 4)
 toggle_mode = true
 texture_normal = ExtResource("2_cng81")
 texture_pressed = ExtResource("1_rkda4")
+texture_disabled = ExtResource("1_rkda4")
 
 [node name="Timer" type="Timer" parent="Control"]
 wait_time = 0.1

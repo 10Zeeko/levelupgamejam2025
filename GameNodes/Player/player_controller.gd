@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var eyes_sprite: Sprite2D = $EyesSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var power_up_particles: CPUParticles2D = $Power_Up_Particles
 
 var SPEED = 300.0
 const ACCEL = 12.0
@@ -12,6 +13,7 @@ const DASH_SPEED    = 1200.0
 const DASH_TIME     = 0.2
 const DASH_COOLDOWN = 1.0
 
+var dash_ready = false
 var is_dashing     = false
 var dash_dir       = Vector2.ZERO
 var dash_timer     = 0.0
@@ -28,7 +30,6 @@ enum State{
 
 var current_state = State.IDLE
 var slowed_player = false
-var dash_ready = true
 
 func get_input():
 	input_dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -44,18 +45,15 @@ func get_input():
 		sprite_2d.flip_h  = input_dir.x < 0
 		eyes_sprite.flip_h = input_dir.x < 0
 
-	# dash trigger
-	if Input.is_action_just_pressed("Dash") and dash_cd_timer <= 0 and not is_dashing:
+	if Input.is_action_just_pressed("Dash") and dash_cd_timer <= 0 and not is_dashing and dash_ready:
 		start_dash()
 
 	return input_dir
 
 func _process(delta: float):
-	# cooldown ticker
 	if dash_cd_timer > 0:
 		dash_cd_timer -= delta
 
-	# handle active dash
 	if is_dashing:
 		dash_timer -= delta
 		velocity = dash_dir * DASH_SPEED
@@ -105,6 +103,8 @@ func end_dash():
 	is_dashing    = false
 	collision_mask = original_mask
 	velocity       = Vector2.ZERO
+	power_up_particles.visible = false
+	dash_ready = false
 
 func enter_dark_mode():
 	sprite_2d.texture = eyesSheet
@@ -117,3 +117,7 @@ func slow_player():
 
 func remove_effect_player():
 	slowed_player = false
+
+func get_power_up_effect():
+	dash_ready = true
+	power_up_particles.visible = true
