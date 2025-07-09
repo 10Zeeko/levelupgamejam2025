@@ -15,6 +15,10 @@ run/main_scene="uid://p7pse3p6f4if"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ParticlesCache="*res://particles_cache.gd"
+
 [display]
 
 window/size/viewport_width=1920

@@ -7,6 +7,7 @@ extends Area2D
 @onready var record_timer: Timer = $RecordTimer
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var start_after_timer: Timer = $StartAfterTimer
+@onready var spawn_particles: GPUParticles2D = $SpawnParticles
 
 var first_time = true
 var teleport_start_position : Vector2
@@ -27,6 +28,7 @@ func _on_move_timer_timeout() -> void:
 		if first_time:
 			self.global_position = next_position
 			first_time = false
+			spawn_particles.emitting = true
 		var tw = create_tween()
 		tw.tween_property(self, "global_position", next_position, 0.2).set_trans(Tween.TRANS_LINEAR)
 

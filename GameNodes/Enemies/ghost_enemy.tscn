@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp3wlomvcq82h"]
+[gd_scene load_steps=14 format=3 uid="uid://dp3wlomvcq82h"]
 
 [ext_resource type="Texture2D" uid="uid://bm0m7frt3v7ij" path="res://Sprites/Player/ghost-sheet.png" id="1_mftk3"]
 [ext_resource type="Script" uid="uid://d373tx345irw2" path="res://GameNodes/Enemies/ghost_enemy.gd" id="1_yhssl"]
+[ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="3_6kkdd"]
+[ext_resource type="Material" uid="uid://nxou8bda2o5m" path="res://Materials/Particles/ghost_enemy.tres" id="4_p6cek"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhssl"]
 atlas = ExtResource("1_mftk3")
@@ -52,6 +54,9 @@ gradient = SubResource("Gradient_yhssl")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6cek"]
+shader = ExtResource("3_6kkdd")
+
 [node name="Ghost_Enemy" type="Area2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_yhssl")
@@ -76,6 +81,13 @@ wait_time = 0.2
 
 [node name="StartAfterTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SpawnParticles" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_p6cek")
+emitting = false
+amount = 107
+one_shot = true
+process_material = ExtResource("4_p6cek")
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="RecordTimer" to="." method="_on_record_timer_timeout"]
