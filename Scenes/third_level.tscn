@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://lgknkmg5yuvw"]
+[gd_scene load_steps=25 format=4 uid="uid://lgknkmg5yuvw"]
 
 [ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_rurlc"]
 [ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="2_nfbmf"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="6_fkyqs"]
 [ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_3ktl5"]
 [ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="8_bca62"]
-[ext_resource type="PackedScene" uid="uid://cfmuwmntvo2vr" path="res://Scenes/end_of_the_game.tscn" id="9_fkyqs"]
+[ext_resource type="PackedScene" uid="uid://b1s4x45ly0u5e" path="res://Scenes/fourth_level.tscn" id="9_fkyqs"]
 [ext_resource type="PackedScene" uid="uid://dp3wlomvcq82h" path="res://GameNodes/Enemies/ghost_enemy.tscn" id="9_nfbmf"]
 [ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="10_va8qn"]
 [ext_resource type="Texture2D" uid="uid://cnrj510hlikdq" path="res://Sprites/Fonts/keyboard_space_icon.png" id="11_8rnfv"]
@@ -1309,6 +1309,10 @@ font = ExtResource("10_va8qn")
 font_size = 64
 font_color = Color(0.124955, 0.421591, 0.407698, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_fkyqs"]
+font = ExtResource("10_va8qn")
+font_size = 64
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_rurlc")
 
@@ -1377,6 +1381,7 @@ texture = SubResource("GradientTexture2D_huasi")
 position = Vector2(-599, 450)
 player_controller = NodePath("../player_controller")
 delay = 0.2
+start_delay = 0.6
 
 [node name="Tutorial_Label" type="Label" parent="."]
 anchors_preset = 15
@@ -1409,6 +1414,22 @@ offset_right = 32.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("11_8rnfv")
+
+[node name="Tutorial_Label2" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 703.0
+offset_top = 12.0
+offset_right = 959.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Take the juice to be able to use the dash"
+label_settings = SubResource("LabelSettings_fkyqs")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="juice_power_up" parent="." node_paths=PackedStringArray("player_controller") instance=ExtResource("12_y58vr")]
 position = Vector2(1506, 538)

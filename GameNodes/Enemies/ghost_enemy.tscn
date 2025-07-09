@@ -74,5 +74,9 @@ texture_scale = 2.0
 [node name="RecordTimer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="StartAfterTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="RecordTimer" to="." method="_on_record_timer_timeout"]
+[connection signal="timeout" from="StartAfterTimer" to="." method="_on_start_after_timer_timeout"]

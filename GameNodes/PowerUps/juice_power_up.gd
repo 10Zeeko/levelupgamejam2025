@@ -8,7 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body == player_controller:
 		player_controller.get_power_up_effect()
 		self.visible = false
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
 		timer.start()
 
 func _on_timer_timeout() -> void:
