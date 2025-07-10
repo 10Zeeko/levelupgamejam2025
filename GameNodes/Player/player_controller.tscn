@@ -145,4 +145,6 @@ emission_sphere_radius = 8.0
 gravity = Vector2(0, -980)
 color = Color(1, 0.705882, 0, 1)
 
+[node name="DashAudioPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,12 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1t1l15w4gngr"]
+[gd_scene load_steps=21 format=3 uid="uid://c1t1l15w4gngr"]
 
 [ext_resource type="Script" uid="uid://bk5lxrkcrystu" path="res://GameNodes/hud.gd" id="1_cng81"]
 [ext_resource type="Texture2D" uid="uid://ljnccgft586o" path="res://Sprites/HUD/off.png" id="1_rkda4"]
 [ext_resource type="Texture2D" uid="uid://cc57o56lfd4lg" path="res://Sprites/HUD/on.png" id="2_cng81"]
+[ext_resource type="AudioStream" uid="uid://cm6k0x81xgqmj" path="res://Sounds/DarkAmbient/spaceEngineLow_000.ogg" id="2_iq0j3"]
+[ext_resource type="AudioStream" uid="uid://daxh1t8s801r7" path="res://Sounds/Switch/switch2.ogg" id="2_kvt8e"]
+[ext_resource type="AudioStream" uid="uid://chwnm2l0nm177" path="res://Sounds/Switch/switch16.ogg" id="3_rrr0n"]
+[ext_resource type="AudioStream" uid="uid://dbok0fwpqomav" path="res://Sounds/DarkAmbient/spaceEngineLow_001.ogg" id="3_yi188"]
 [ext_resource type="PackedScene" uid="uid://gyxfuheccwcr" path="res://GameNodes/level_timer.tscn" id="4_8lnhx"]
+[ext_resource type="AudioStream" uid="uid://boyvkvvd1auiq" path="res://Sounds/DarkAmbient/spaceEngineLow_002.ogg" id="4_uwo1i"]
+[ext_resource type="AudioStream" uid="uid://be1glaig78twu" path="res://Sounds/Switch/switch17.ogg" id="4_wc674"]
+[ext_resource type="AudioStream" uid="uid://c572l2y8ur8xg" path="res://Sounds/DarkAmbient/spaceEngineLow_003.ogg" id="5_3x2ny"]
+[ext_resource type="AudioStream" uid="uid://chwcxrvcjfgt5" path="res://Sounds/Switch/switch18.ogg" id="5_crhsa"]
+[ext_resource type="AudioStream" uid="uid://ytalv17w78uo" path="res://Sounds/Switch/switch23.ogg" id="6_75hwf"]
+[ext_resource type="AudioStream" uid="uid://bhp1l8i01vhd7" path="res://Sounds/DarkAmbient/spaceEngineLow_004.ogg" id="6_pbrk4"]
+[ext_resource type="AudioStream" uid="uid://o3cjs65ugtyf" path="res://Sounds/Switch/switch24.ogg" id="7_apxi5"]
+[ext_resource type="AudioStream" uid="uid://dsfqmd8pjmh4t" path="res://Sounds/Switch/switch25.ogg" id="8_gwwoj"]
+[ext_resource type="AudioStream" uid="uid://ba2s3y0wtxoj" path="res://Sounds/Switch/switch26.ogg" id="9_xrrvh"]
+[ext_resource type="AudioStream" uid="uid://c8o4qyglnvci0" path="res://Sounds/Switch/switch32.ogg" id="10_aafg3"]
+[ext_resource type="AudioStream" uid="uid://xl7ul0jrrtwd" path="res://Sounds/Switch/switch33.ogg" id="11_ogqed"]
+[ext_resource type="AudioStream" uid="uid://djf4rfa5jcpkb" path="res://Sounds/Switch/switch34.ogg" id="12_wn675"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_cng81")
+switch_audios_streams = Array[AudioStreamOggVorbis]([ExtResource("2_kvt8e"), ExtResource("3_rrr0n"), ExtResource("4_wc674"), ExtResource("5_crhsa"), ExtResource("6_75hwf"), ExtResource("7_apxi5"), ExtResource("8_gwwoj"), ExtResource("9_xrrvh"), ExtResource("10_aafg3"), ExtResource("11_ogqed"), ExtResource("12_wn675")])
+dark_noise_streams = Array[AudioStreamOggVorbis]([ExtResource("2_iq0j3"), ExtResource("3_yi188"), ExtResource("4_uwo1i"), ExtResource("5_3x2ny"), ExtResource("6_pbrk4")])
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -36,6 +54,11 @@ one_shot = true
 position = Vector2(1876, 602)
 rotation = 3.14159
 scale = Vector2(3, 3)
+
+[node name="SwitchStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="DarkNoisePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -16.0
 
 [connection signal="toggled" from="Control/TextureButton" to="." method="_on_texture_button_toggled"]
 [connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]

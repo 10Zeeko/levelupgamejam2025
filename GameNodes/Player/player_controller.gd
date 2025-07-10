@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var eyes_sprite: Sprite2D = $EyesSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var power_up_particles: CPUParticles2D = $Power_Up_Particles
+@onready var dash_audio_player: AudioStreamPlayer = $DashAudioPlayer
+@export var dash_audios_streams : Array[AudioStreamOggVorbis]
 
 var SPEED = 300.0
 const ACCEL = 12.0
@@ -95,6 +97,9 @@ func start_dash():
 	is_dashing    = true
 	dash_timer    = DASH_TIME
 	dash_cd_timer = DASH_COOLDOWN
+	
+	dash_audio_player.stream = dash_audios_streams[randi_range(0, dash_audios_streams.size()-1)]
+	dash_audio_player.play()
 
 	# ignore objects on Layer 3 (bit 2)
 	collision_mask &= ~(1 << 2)

@@ -5,6 +5,11 @@ extends CanvasLayer
 @onready var timer: Timer = $Control/Timer
 @onready var level_timer: Node2D = $LevelTimer
 
+@export var switch_audios_streams : Array[AudioStreamOggVorbis]
+@onready var switch_stream_player: AudioStreamPlayer = $SwitchStreamPlayer
+@export var dark_noise_streams : Array[AudioStreamOggVorbis]
+@onready var dark_noise_player: AudioStreamPlayer = $DarkNoisePlayer
+
 signal lightsSignal
 
 func _ready() -> void:
@@ -14,6 +19,13 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 	changeLight = toggled_on
 	lightsSignal.emit()
 	texture_button.disabled = true
+	
+	switch_stream_player.stream = switch_audios_streams[randi_range(0, switch_audios_streams.size()-1)]
+	switch_stream_player.play()
+	
+	dark_noise_player.stream = dark_noise_streams[randi_range(0, dark_noise_streams.size()-1)]
+	dark_noise_player.play()
+	
 	if toggled_on:
 		level_timer.timer_time = level_time
 		level_timer.start_timer()
