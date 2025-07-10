@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgw6pk1ukbbx8"]
+
+[ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="1_28flt"]
+[ext_resource type="Script" uid="uid://6q0qg2530km6" path="res://GameNodes/Menus/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://bpvilm07uf4tv" path="res://Sprites/HUD/panel-border-001.png" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://b4lqfluxonb0o" path="res://Sprites/HUD/panel-border-000.png" id="2_48xlc"]
+[ext_resource type="PackedScene" uid="uid://p7pse3p6f4if" path="res://Scenes/main_scene.tscn" id="2_n45e2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
+texture = ExtResource("2_48xlc")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ehe0"]
+texture = ExtResource("2_48xlc")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(0.691357, 0.691357, 0.691357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
+texture = ExtResource("2_1ehe0")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce3w2")
+next_level = ExtResource("2_n45e2")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -58.0
+offset_right = 224.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1ehe0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ce3w2")
+text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

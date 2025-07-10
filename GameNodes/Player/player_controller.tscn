@@ -1,10 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://douef0hekdqu1"]
+[gd_scene load_steps=21 format=3 uid="uid://douef0hekdqu1"]
 
 [ext_resource type="Script" uid="uid://1jgm8oa1oprg" path="res://GameNodes/Player/player_controller.gd" id="1_3u5yd"]
 [ext_resource type="Texture2D" uid="uid://dmdegriu52y84" path="res://Sprites/Player/player-sheet.png" id="1_wog3g"]
 [ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="2_8hkdc"]
 [ext_resource type="Texture2D" uid="uid://dawbhgu212k05" path="res://Sprites/Player/player-eyes-sheet.png" id="3_tndex"]
+[ext_resource type="AudioStream" uid="uid://bhplbbykj7yf4" path="res://Sounds/DashSounds/woosh1.ogg" id="4_11xcf"]
 [ext_resource type="Texture2D" uid="uid://bl5kfig2y1f7j" path="res://Sprites/PowerUps/particle.png" id="5_5xi7h"]
+[ext_resource type="AudioStream" uid="uid://d1n7cuff2wd6n" path="res://Sounds/DashSounds/woosh2.ogg" id="5_pb2dj"]
+[ext_resource type="AudioStream" uid="uid://d0yd0e67cnpw" path="res://Sounds/DashSounds/woosh3.ogg" id="6_lvp12"]
+[ext_resource type="AudioStream" uid="uid://c3h7yfu6mwvqc" path="res://Sounds/DashSounds/woosh4.ogg" id="7_qothi"]
+[ext_resource type="AudioStream" uid="uid://cwbe7a8dww7qw" path="res://Sounds/DashSounds/woosh5.ogg" id="8_aaccu"]
+[ext_resource type="AudioStream" uid="uid://c8bo2o40hf6lv" path="res://Sounds/DashSounds/woosh6.ogg" id="9_etjyl"]
+[ext_resource type="AudioStream" uid="uid://dllvuffpu0nb5" path="res://Sounds/DashSounds/woosh7.ogg" id="10_hiqeg"]
+[ext_resource type="AudioStream" uid="uid://bk2vo83w8i52v" path="res://Sounds/DashSounds/woosh8.ogg" id="11_014e0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u5yd"]
 radius = 4.75
@@ -114,6 +122,7 @@ collision_mask = 5
 script = ExtResource("1_3u5yd")
 playerSheet = ExtResource("1_wog3g")
 eyesSheet = ExtResource("3_tndex")
+dash_audios_streams = Array[AudioStreamOggVorbis]([ExtResource("4_11xcf"), ExtResource("5_pb2dj"), ExtResource("6_lvp12"), ExtResource("7_qothi"), ExtResource("8_aaccu"), ExtResource("9_etjyl"), ExtResource("10_hiqeg"), ExtResource("11_014e0")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wog3g")
@@ -146,5 +155,7 @@ gravity = Vector2(0, -980)
 color = Color(1, 0.705882, 0, 1)
 
 [node name="DashAudioPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ResetLevelTimer" type="Timer" parent="."]
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -1195,7 +1195,7 @@ position = Vector2(162.25, 190.25)
 polygon = PackedVector2Array(11.5, -39, 10.5, 66.75, -31.5, 68, -31, -37.25)
 
 [node name="HUD_Switch" parent="." instance=ExtResource("5_cin73")]
-level_time = 3.55
+level_time = 4.25
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.0

@@ -126,3 +126,6 @@ func remove_effect_player():
 func get_power_up_effect():
 	dash_ready = true
 	power_up_particles.visible = true
+
+func kill_player():
+	self.hide()

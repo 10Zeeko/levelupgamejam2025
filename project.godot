@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LevelUpGameJam2025"
-run/main_scene="uid://p7pse3p6f4if"
+run/main_scene="uid://cgw6pk1ukbbx8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

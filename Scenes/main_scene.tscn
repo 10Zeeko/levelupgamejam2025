@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://p7pse3p6f4if"]
+[gd_scene load_steps=26 format=4 uid="uid://p7pse3p6f4if"]
 
 [ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_jv6wh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b23pnbay20vj3" path="res://Scenes/first_level.tscn" id="9_drdnd"]
 [ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="9_m1efj"]
 [ext_resource type="Texture2D" uid="uid://crd4j8qr1lk1c" path="res://Sprites/Fonts/keyboard_shift.png" id="10_mai8y"]
+[ext_resource type="AudioStream" uid="uid://c8mo25w31rrwc" path="res://Sounds/toiletFlush.ogg" id="13_ioaeq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l7je"]
 texture = ExtResource("1_52fb6")
@@ -1281,6 +1282,13 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 texture = ExtResource("10_mai8y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(97, 229)
+stream = ExtResource("13_ioaeq")
+autoplay = true
+max_distance = 1217.0
+attenuation = 1.51572
 
 [connection signal="body_entered" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_entered"]
 [connection signal="body_exited" from="Obstacles/ObstaclesArea2D" to="Obstacles" method="_on_obstacles_area_2d_body_exited"]
