@@ -7,15 +7,12 @@ script/source = "extends Node2D
 @onready var time_bar: Line2D = $TimeBar
 @onready var timer: Timer = $TimeBar/Timer
 @export var timer_time: float
+@onready var restart_timer: Timer = $RestartTimer
 
 func start_timer():
 	decrease_timer()
 	timer.wait_time = timer_time
 	timer.start()
-	
-func restart_timer():
-	time_bar.points = PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.0, 200.0)])
-	timer.stop()
 
 func decrease_timer():
 	var tw = create_tween()
@@ -27,7 +24,12 @@ func decrease_timer():
 	)
 
 func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	restart_timer.start()
+	Globals.kill_player()
+
+
+func _on_restart_timer_timeout() -> void:
+	Globals.change_level()
 "
 
 [node name="LevelTimer" type="Node2D"]

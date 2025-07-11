@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var power_up_particles: CPUParticles2D = $Power_Up_Particles
 @onready var dash_audio_player: AudioStreamPlayer = $DashAudioPlayer
 @export var dash_audios_streams : Array[AudioStreamOggVorbis]
+@export var death_particles : PackedScene = preload("res://Materials/Particles/player_dies.tscn")
 
 var SPEED = 300.0
 const ACCEL = 12.0
@@ -32,6 +33,9 @@ enum State{
 
 var current_state = State.IDLE
 var slowed_player = false
+
+func _ready() -> void:
+	Globals.player_controller = self
 
 func get_input():
 	input_dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -128,4 +132,7 @@ func get_power_up_effect():
 	power_up_particles.visible = true
 
 func kill_player():
-	self.hide()
+	var particles_instance = death_particles.instantiate()
+	get_tree().current_scene.add_child(particles_instance)
+	particles_instance.global_position = global_position
+	self.queue_free()

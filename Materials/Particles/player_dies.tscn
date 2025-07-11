@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8fdsyj4vs7t"]
+
+[ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="1_2x3qi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8npf"]
+shader = ExtResource("1_2x3qi")
+
+[node name="player_dies_particles" type="CPUParticles2D"]
+material = SubResource("ShaderMaterial_v8npf")
+scale = Vector2(4, 4)
+amount = 28
+lifetime = 2.0
+explosiveness = 0.8
+emission_shape = 3
+emission_rect_extents = Vector2(6, 10)
+gravity = Vector2(0, 0)
+initial_velocity_max = 7.95
+angular_velocity_max = 411.75
+radial_accel_min = 1.63
+radial_accel_max = 37.4
+scale_amount_min = 4.0
+scale_amount_max = 4.5

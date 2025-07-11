@@ -35,6 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 1600.0
 offset_top = 696.0
@@ -55,6 +56,10 @@ position = Vector2(1876, 602)
 rotation = 3.14159
 scale = Vector2(3, 3)
 
+[node name="RestartTimer" type="Timer" parent="LevelTimer"]
+wait_time = 2.0
+one_shot = true
+
 [node name="SwitchStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="DarkNoisePlayer" type="AudioStreamPlayer" parent="."]
@@ -62,3 +67,4 @@ volume_db = -16.0
 
 [connection signal="toggled" from="Control/TextureButton" to="." method="_on_texture_button_toggled"]
 [connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelTimer/RestartTimer" to="LevelTimer" method="_on_restart_timer_timeout"]

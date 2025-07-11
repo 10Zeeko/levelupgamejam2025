@@ -29,6 +29,7 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		level_timer.timer_time = level_time
 		level_timer.start_timer()
+		Globals.count_time = true
 	else:
 		level_timer.restart_timer()
 
