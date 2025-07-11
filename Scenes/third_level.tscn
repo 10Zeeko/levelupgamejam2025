@@ -1,11 +1,13 @@
-[gd_scene load_steps=25 format=4 uid="uid://lgknkmg5yuvw"]
+[gd_scene load_steps=27 format=4 uid="uid://lgknkmg5yuvw"]
 
 [ext_resource type="Script" uid="uid://cxx2wim26abef" path="res://GameNodes/Lights/lights.gd" id="1_rurlc"]
 [ext_resource type="Texture2D" uid="uid://b4vtifw8b5tf6" path="res://Sprites/Tilesheets/roguelikeSheet_transparent.png" id="2_nfbmf"]
 [ext_resource type="Texture2D" uid="uid://b4ejjtdt1un6s" path="res://Sprites/Tilesheets/roguelikeIndoor_transparent.png" id="3_va8qn"]
 [ext_resource type="Script" uid="uid://bf4xt03ue3urf" path="res://GameNodes/Interactables/obstacles.gd" id="4_8rnfv"]
+[ext_resource type="AudioStream" uid="uid://dwa6uobcwni4j" path="res://Sounds/legos/clothBelt2.ogg" id="5_bca62"]
 [ext_resource type="PackedScene" uid="uid://c1t1l15w4gngr" path="res://GameNodes/hud.tscn" id="5_y58vr"]
 [ext_resource type="PackedScene" uid="uid://douef0hekdqu1" path="res://GameNodes/Player/player_controller.tscn" id="6_fkyqs"]
+[ext_resource type="AudioStream" uid="uid://0tpn506p7b7x" path="res://Sounds/legos/clothBelt.ogg" id="6_pb64v"]
 [ext_resource type="PackedScene" uid="uid://ctmeqa0nf5mca" path="res://GameNodes/Interactables/switch.tscn" id="7_3ktl5"]
 [ext_resource type="PackedScene" uid="uid://c2uumwb6oqpcv" path="res://GameNodes/Interactables/bed.tscn" id="8_bca62"]
 [ext_resource type="PackedScene" uid="uid://b1s4x45ly0u5e" path="res://Scenes/fourth_level.tscn" id="9_fkyqs"]
@@ -1335,6 +1337,7 @@ tile_map_data = PackedByteArray("AAAKAA8AAAAMAA4AAAAKAA4AAAAMAA4AAAAKAA0AAAAMAA4
 tile_set = SubResource("TileSet_iacmt")
 script = ExtResource("4_8rnfv")
 player_controller = NodePath("../player_controller")
+legos_sounds = Array[AudioStreamOggVorbis]([ExtResource("5_bca62"), ExtResource("6_pb64v")])
 
 [node name="ObstaclesArea2D" type="Area2D" parent="Obstacles"]
 

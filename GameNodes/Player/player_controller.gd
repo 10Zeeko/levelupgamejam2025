@@ -14,7 +14,7 @@ var SPEED = 300.0
 const ACCEL = 12.0
 const DASH_SPEED    = 1200.0
 const DASH_TIME     = 0.2
-const DASH_COOLDOWN = 1.0
+const DASH_COOLDOWN = 0.3
 
 var dash_ready = false
 var is_dashing     = false

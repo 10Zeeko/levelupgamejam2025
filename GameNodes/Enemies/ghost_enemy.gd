@@ -40,3 +40,8 @@ func _on_hud_switch_lights_signal() -> void:
 func _on_start_after_timer_timeout() -> void:
 	move_timer.wait_time = delay
 	move_timer.start()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == player_controller:
+		Globals.kill_player()

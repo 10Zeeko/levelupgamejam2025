@@ -36,4 +36,7 @@ func change_level():
 		get_tree().reload_current_scene()
 
 func kill_player():
-	player_controller.kill_player()
+	if player_controller != null:
+		player_controller.kill_player()
+		await get_tree().create_timer(1.0).timeout
+		change_level()

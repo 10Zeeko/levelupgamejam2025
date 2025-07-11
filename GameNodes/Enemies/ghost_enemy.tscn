@@ -89,6 +89,7 @@ amount = 107
 one_shot = true
 process_material = ExtResource("4_p6cek")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="RecordTimer" to="." method="_on_record_timer_timeout"]
 [connection signal="timeout" from="StartAfterTimer" to="." method="_on_start_after_timer_timeout"]
