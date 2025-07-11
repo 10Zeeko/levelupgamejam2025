@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://douef0hekdqu1"]
+[gd_scene load_steps=23 format=3 uid="uid://douef0hekdqu1"]
 
 [ext_resource type="Script" uid="uid://1jgm8oa1oprg" path="res://GameNodes/Player/player_controller.gd" id="1_3u5yd"]
 [ext_resource type="Texture2D" uid="uid://dmdegriu52y84" path="res://Sprites/Player/player-sheet.png" id="1_wog3g"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://c8bo2o40hf6lv" path="res://Sounds/DashSounds/woosh6.ogg" id="9_etjyl"]
 [ext_resource type="AudioStream" uid="uid://dllvuffpu0nb5" path="res://Sounds/DashSounds/woosh7.ogg" id="10_hiqeg"]
 [ext_resource type="AudioStream" uid="uid://bk2vo83w8i52v" path="res://Sounds/DashSounds/woosh8.ogg" id="11_014e0"]
+[ext_resource type="Texture2D" uid="uid://bqvc8yu5wmy1s" path="res://Sprites/Player/emote_sleep.png" id="14_pb2dj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u5yd"]
 radius = 4.75
@@ -115,6 +116,9 @@ shader = ExtResource("2_8hkdc")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5xi7h"]
 shader = ExtResource("2_8hkdc")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvp12"]
+shader = ExtResource("2_8hkdc")
+
 [node name="player_controller" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 collision_layer = 5
@@ -157,5 +161,11 @@ color = Color(1, 0.705882, 0, 1)
 [node name="DashAudioPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="ResetLevelTimer" type="Timer" parent="."]
+
+[node name="ZIcon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_lvp12")
+position = Vector2(-10, -12)
+texture = ExtResource("14_pb2dj")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

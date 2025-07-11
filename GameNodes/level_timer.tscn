@@ -25,7 +25,8 @@ func decrease_timer():
 
 func _on_timer_timeout() -> void:
 	restart_timer.start()
-	Globals.kill_player()
+	if not(Globals.level_completed):
+		Globals.kill_player()
 
 
 func _on_restart_timer_timeout() -> void:

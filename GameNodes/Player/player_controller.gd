@@ -136,3 +136,12 @@ func kill_player():
 	get_tree().current_scene.add_child(particles_instance)
 	particles_instance.global_position = global_position
 	self.queue_free()
+
+func is_sleeping():
+	var tw = create_tween()
+	tw.tween_property(
+		$ZIcon,
+		"modulate",
+		Color(1, 1, 1, 1.0),
+		0.3
+	)

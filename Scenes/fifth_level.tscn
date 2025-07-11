@@ -1378,7 +1378,7 @@ sources/0 = SubResource("TileSetAtlasSource_x6ack")
 sources/1 = SubResource("TileSetAtlasSource_6ev3c")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1em41"]
-radius = 18.0
+radius = 15.75
 height = 209.5
 
 [sub_resource type="Gradient" id="Gradient_maf8m"]
@@ -1418,15 +1418,15 @@ legos_sounds = Array[AudioStreamOggVorbis]([ExtResource("5_kepwy"), ExtResource(
 [node name="ObstaclesArea2D" type="Area2D" parent="Obstacles"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/ObstaclesArea2D"]
-position = Vector2(167.75, -31)
-polygon = PackedVector2Array(1.75, 34.25, 2, 67, -28.5, 67.5, -28.75, 34.25)
+position = Vector2(327.5, 15.25)
+polygon = PackedVector2Array(19.75, 54, 19, 61.25, -49.75, 63.25, -56.75, 55.5)
 
 [node name="Hole_Collision" type="StaticBody2D" parent="Obstacles"]
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Hole_Collision"]
-position = Vector2(225.25, 151.25)
+position = Vector2(222.75, 151.25)
 shape = SubResource("CapsuleShape2D_1em41")
 
 [node name="HUD_Switch" parent="." instance=ExtResource("5_56e0d")]

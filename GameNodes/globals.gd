@@ -35,6 +35,10 @@ func change_level():
 	else:
 		get_tree().reload_current_scene()
 
+func player_sleeping():
+	if player_controller != null:
+		player_controller.is_sleeping()
+
 func kill_player():
 	if player_controller != null:
 		player_controller.kill_player()
