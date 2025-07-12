@@ -5,6 +5,8 @@ const RECORDS_THEME = preload("res://Materials/records_theme.tres")
 const COLUMNS := 3
 
 func _ready() -> void:
+	Globals.transition_fade_out()
+	
 	var total_levels := Globals.record_timers.size()
 	var padded_total := int(ceil(total_levels / float(COLUMNS))) * COLUMNS
 

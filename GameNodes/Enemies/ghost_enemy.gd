@@ -9,6 +9,10 @@ extends Area2D
 @onready var start_after_timer: Timer = $StartAfterTimer
 @onready var spawn_particles: GPUParticles2D = $SpawnParticles
 
+@export var enemy_audios_streams : Array[AudioStreamOggVorbis]
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+
 var first_time = true
 var teleport_start_position : Vector2
 
@@ -29,6 +33,8 @@ func _on_move_timer_timeout() -> void:
 			self.global_position = next_position
 			first_time = false
 			spawn_particles.emitting = true
+			audio_stream_player.stream = enemy_audios_streams[randi_range(0, enemy_audios_streams.size()-1)]
+			audio_stream_player.play()
 		var tw = create_tween()
 		tw.tween_property(self, "global_position", next_position, 0.2).set_trans(Tween.TRANS_LINEAR)
 

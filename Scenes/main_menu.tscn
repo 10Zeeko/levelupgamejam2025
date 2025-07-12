@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cgw6pk1ukbbx8"]
+[gd_scene load_steps=24 format=4 uid="uid://cgw6pk1ukbbx8"]
 
 [ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="1_28flt"]
 [ext_resource type="Script" uid="uid://6q0qg2530km6" path="res://GameNodes/Menus/main_menu.gd" id="1_ce3w2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dmdegriu52y84" path="res://Sprites/Player/player-sheet.png" id="6_trj04"]
 [ext_resource type="Texture2D" uid="uid://b4ejjtdt1un6s" path="res://Sprites/Tilesheets/roguelikeIndoor_transparent.png" id="7_yhxw7"]
 [ext_resource type="Shader" uid="uid://b0k7eo45rrk27" path="res://Materials/main_menu.gdshader" id="8_yhxw7"]
+[ext_resource type="Theme" uid="uid://b2r55wb0kmyi3" path="res://Materials/records_theme.tres" id="10_16hvj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1dhk"]
 texture = ExtResource("7_yhxw7")
@@ -1263,5 +1264,19 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_n45e2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1ehe0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ce3w2")
 text = "Start Game"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -77.0
+offset_right = 411.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme = ExtResource("10_16hvj")
+theme_override_font_sizes/font_size = 64
+text = "Zeeko (Pol Garriga)"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

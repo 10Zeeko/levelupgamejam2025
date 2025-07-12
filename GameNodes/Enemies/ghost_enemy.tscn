@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp3wlomvcq82h"]
+[gd_scene load_steps=16 format=3 uid="uid://dp3wlomvcq82h"]
 
 [ext_resource type="Texture2D" uid="uid://bm0m7frt3v7ij" path="res://Sprites/Player/ghost-sheet.png" id="1_mftk3"]
 [ext_resource type="Script" uid="uid://d373tx345irw2" path="res://GameNodes/Enemies/ghost_enemy.gd" id="1_yhssl"]
+[ext_resource type="AudioStream" uid="uid://ce2x8l3wcjqu6" path="res://Sounds/Enemy/boo.ogg" id="2_vg3uv"]
 [ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="3_6kkdd"]
+[ext_resource type="AudioStream" uid="uid://c1b5jkv2xyaac" path="res://Sounds/Enemy/sad-ghost.ogg" id="4_08ya2"]
 [ext_resource type="Material" uid="uid://nxou8bda2o5m" path="res://Materials/Particles/ghost_enemy.tres" id="4_p6cek"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhssl"]
@@ -60,6 +62,7 @@ shader = ExtResource("3_6kkdd")
 [node name="Ghost_Enemy" type="Area2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_yhssl")
+enemy_audios_streams = Array[AudioStreamOggVorbis]([ExtResource("2_vg3uv"), ExtResource("4_08ya2")])
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5frjw")
@@ -88,6 +91,8 @@ emitting = false
 amount = 107
 one_shot = true
 process_material = ExtResource("4_p6cek")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

@@ -57,7 +57,6 @@ func change_level():
 	if level_completed:
 		count_time = false
 		time_passed = 0.0
-		print(record_timers)
 		get_tree().change_scene_to_packed(levels[current_level])
 	else:
 		get_tree().reload_current_scene()
