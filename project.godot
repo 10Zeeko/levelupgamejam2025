@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="LevelUpGameJam2025"
+config/name="Lights_Out_Run.console"
 run/main_scene="uid://cgw6pk1ukbbx8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://657ddxpl6cyr"
 
 [autoload]
 

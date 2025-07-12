@@ -8,9 +8,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and light_is_off:
 		timer.start()
 		Globals.level_completed = true
+		Globals.count_time = false
 		Globals.player_sleeping()
 
 func _change_scene():
+	if Globals.record_timers[Globals.current_level] < Globals.time_passed:
+			Globals.record_timers[Globals.current_level] = Globals.time_passed
 	Globals.current_level += 1
 	Globals.change_level()
 

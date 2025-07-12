@@ -10,14 +10,22 @@ extends CanvasLayer
 @export var dark_noise_streams : Array[AudioStreamOggVorbis]
 @onready var dark_noise_player: AudioStreamPlayer = $DarkNoisePlayer
 
+var seconds : float
+var miliseconds : float
+var current_time : float
+
 signal lightsSignal
 
 func _ready() -> void:
 	hide_hud()
+	Globals.lights_on()
+	Globals.count_time = false
+	Globals.time_passed = 0
 
 func _on_texture_button_toggled(toggled_on: bool) -> void:
 	changeLight = toggled_on
 	lightsSignal.emit()
+	Globals.lights_off()
 	texture_button.disabled = true
 	
 	switch_stream_player.stream = switch_audios_streams[randi_range(0, switch_audios_streams.size()-1)]
@@ -55,3 +63,10 @@ func show_hud():
 
 func _on_timer_timeout() -> void:
 	texture_button.disabled = true
+
+func _process(_delta: float) -> void:
+	current_time = Globals.get_time()
+	seconds = fmod(current_time, 60)
+	miliseconds = fmod(current_time, 1) * 100
+	$Control/HBoxContainer/Seconds.text = "%02d" % seconds
+	$Control/HBoxContainer/Miliseconds.text = "%02d" % miliseconds
