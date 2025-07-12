@@ -21,6 +21,7 @@ func _ready() -> void:
 	Globals.lights_on()
 	Globals.count_time = false
 	Globals.time_passed = 0
+	Globals.transition_fade_out()
 
 func _on_texture_button_toggled(toggled_on: bool) -> void:
 	changeLight = toggled_on

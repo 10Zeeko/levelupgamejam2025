@@ -15,6 +15,9 @@ const PLAYER_DEATH = preload("res://Sounds/PlayerSounds/player_death.ogg")
 var music_player : AudioStreamPlayer
 var sfx_player : AudioStreamPlayer
 
+const TRANSITIONS_OVERLAY = preload("res://GameNodes/Menus/transitions_overlay.tscn")
+var transitions_node : Node
+
 func _ready() -> void:
 	# Game Audio
 	music_player = AudioStreamPlayer.new()
@@ -30,6 +33,11 @@ func _ready() -> void:
 
 	music_player.play()
 	
+	# Transitions
+	
+	transitions_node = TRANSITIONS_OVERLAY.instantiate()
+	add_child(transitions_node)
+	
 	# Game levels
 	levels.append(preload("res://Scenes/main_scene.tscn"))
 	levels.append(preload("res://Scenes/first_level.tscn"))
@@ -39,7 +47,7 @@ func _ready() -> void:
 	levels.append(preload("res://Scenes/fifth_level.tscn"))
 	levels.append(preload("res://Scenes/end_of_the_game.tscn"))
 	
-	record_timers.resize(levels.size())
+	record_timers.resize(levels.size()-1)
 
 func _physics_process(delta: float) -> void:
 	if count_time:
@@ -80,3 +88,11 @@ func lights_on():
 
 func get_time():
 	return time_passed
+	
+func transition_fade_in():
+	var anim := transitions_node.get_node("AnimationPlayer")
+	anim.play("Fade In")
+
+func transition_fade_out():
+	var anim := transitions_node.get_node("AnimationPlayer")
+	anim.play("Fade out")

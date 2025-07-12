@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	call_deferred("_change_scene")
+	Globals.transition_fade_in()
 
 func _change_scene():
 	Globals.level_completed = true

@@ -10,6 +10,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		Globals.level_completed = true
 		Globals.count_time = false
 		Globals.player_sleeping()
+		Globals.transition_fade_in()
 
 func _change_scene():
 	if Globals.record_timers[Globals.current_level] < Globals.time_passed:

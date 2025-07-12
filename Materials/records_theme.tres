@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b2r55wb0kmyi3"]
+
+[ext_resource type="FontFile" uid="uid://cfmglbt7ynprg" path="res://Sprites/Fonts/Kenney Pixel.ttf" id="1_pkejs"]
+
+[resource]
+default_font = ExtResource("1_pkejs")
+default_font_size = 96
