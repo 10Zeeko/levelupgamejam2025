@@ -26,6 +26,7 @@ frame = 71
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, 1.5)
 shape = SubResource("RectangleShape2D_225fl")
+disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(7.25, 0.5)

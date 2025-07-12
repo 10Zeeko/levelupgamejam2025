@@ -46,6 +46,8 @@ func get_input():
 		current_state = State.WALK
 	if Input.get_action_strength("Running"):
 		current_state = State.RUN
+	if Input.get_action_strength("Reset"):
+		Globals.change_level()
 	
 	if input_dir.x != 0:
 		sprite_2d.flip_h  = input_dir.x < 0
@@ -112,8 +114,7 @@ func end_dash():
 	is_dashing    = false
 	collision_mask = original_mask
 	velocity       = Vector2.ZERO
-	power_up_particles.visible = false
-	dash_ready = false
+	remove_power_up_effect()
 
 func enter_dark_mode():
 	sprite_2d.texture = eyesSheet
@@ -130,6 +131,10 @@ func remove_effect_player():
 func get_power_up_effect():
 	dash_ready = true
 	power_up_particles.visible = true
+	
+func remove_power_up_effect():
+	dash_ready = false
+	power_up_particles.visible = false
 
 func kill_player():
 	var particles_instance = death_particles.instantiate()

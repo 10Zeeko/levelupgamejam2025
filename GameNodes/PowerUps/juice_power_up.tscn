@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dditk5ntc04v"]
+[gd_scene load_steps=8 format=3 uid="uid://dditk5ntc04v"]
 
 [ext_resource type="Texture2D" uid="uid://dbpqesva7gpei" path="res://Sprites/PowerUps/juice.png" id="1_nhyf6"]
 [ext_resource type="Script" uid="uid://caevpd2pwpin7" path="res://GameNodes/PowerUps/juice_power_up.gd" id="1_v5m4c"]
 [ext_resource type="Shader" uid="uid://b3klq82o5gsp6" path="res://GameNodes/Player/player_controller.gdshader" id="2_7rh51"]
 [ext_resource type="Texture2D" uid="uid://bl5kfig2y1f7j" path="res://Sprites/PowerUps/particle.png" id="2_h8rfk"]
+
+[sub_resource type="Curve" id="Curve_v5m4c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhyf6"]
 radius = 33.1361
@@ -13,6 +17,7 @@ shader = ExtResource("2_7rh51")
 
 [node name="juice_power_up" type="Area2D"]
 script = ExtResource("1_v5m4c")
+position_curve = SubResource("Curve_v5m4c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)

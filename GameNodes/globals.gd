@@ -71,6 +71,7 @@ func lights_off():
 	if music_player:
 		var tw = create_tween()
 		tw.tween_property(music_player, "volume_db", -10.0, 0.5)
+		player_controller.remove_power_up_effect()
 
 func lights_on():
 	if music_player:
