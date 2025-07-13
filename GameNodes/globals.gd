@@ -18,6 +18,12 @@ var sfx_player : AudioStreamPlayer
 const TRANSITIONS_OVERLAY = preload("res://GameNodes/Menus/transitions_overlay.tscn")
 var transitions_node : Node
 
+var shake_target: Node = null
+var shake_timer: Timer = null
+var shake_amount: float = 0.0
+var shake_active: bool = false
+var original_shake_position: Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	# Game Audio
 	music_player = AudioStreamPlayer.new()
@@ -77,7 +83,7 @@ func kill_player():
 func lights_off():
 	if music_player:
 		var tw = create_tween()
-		tw.tween_property(music_player, "volume_db", -10.0, 0.5)
+		tw.tween_property(music_player, "volume_db", -20.0, 0.5)
 		player_controller.remove_power_up_effect()
 
 func lights_on():
@@ -95,3 +101,49 @@ func transition_fade_in():
 func transition_fade_out():
 	var anim := transitions_node.get_node("AnimationPlayer")
 	anim.play("Fade out")
+	
+func shake_for_time(target: Node, intensity: float, duration: float) -> void:
+	if not target:
+		return
+	shake_target = target
+	original_shake_position = target.position
+
+	var tween := create_tween()
+	var steps := int(duration / 0.05)
+	for i in range(steps):
+		var offset := Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
+		tween.tween_property(target, "position", original_shake_position + offset, 0.025)
+		tween.tween_property(target, "position", original_shake_position, 0.025)
+
+func start_shake(target: Node, intensity: float) -> void:
+	if not target:
+		return
+	if shake_active:
+		stop_shake()
+
+	shake_active = true
+	shake_target = target
+	shake_amount = intensity
+	original_shake_position = target.position
+
+	shake_timer = Timer.new()
+	shake_timer.wait_time = 0.05
+	shake_timer.timeout.connect(_on_shake_timeout)
+	shake_timer.autostart = true
+	shake_timer.one_shot = false
+	add_child(shake_timer)
+
+func stop_shake() -> void:
+	if shake_timer and shake_timer.is_inside_tree():
+		shake_timer.stop()
+		shake_timer.queue_free()
+	shake_timer = null
+	shake_active = false
+	if shake_target:
+		shake_target.position = original_shake_position
+	shake_target = null
+
+func _on_shake_timeout() -> void:
+	if shake_target:
+		var offset := Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
+		shake_target.position = original_shake_position + offset

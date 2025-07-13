@@ -28,6 +28,7 @@ func _on_timer_timeout() -> void:
 	Globals.transition_fade_in()
 	if not(Globals.level_completed):
 		Globals.kill_player()
+		Globals.shake_for_time($\"../..\", 50.0, 0.1)
 
 
 func _on_restart_timer_timeout() -> void:

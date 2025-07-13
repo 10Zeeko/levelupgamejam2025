@@ -19,12 +19,14 @@ func _on_obstacles_area_2d_body_entered(body: Node2D) -> void:
 		player_inside = true
 		player_controller.slow_player()
 		_play_random_sound()
+		Globals.start_shake($"..", 2.0)
 
 func _on_obstacles_area_2d_body_exited(body: Node2D) -> void:
 	if body == player_controller:
 		player_inside = false
 		player_controller.remove_effect_player()
 		audio_player.stop()
+		Globals.stop_shake()
 
 func _play_random_sound():
 	if legos_sounds.is_empty():

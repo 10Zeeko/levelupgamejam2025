@@ -91,7 +91,7 @@ one_shot = true
 [node name="SwitchStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="DarkNoisePlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -16.0
+volume_db = -20.0
 
 [connection signal="toggled" from="Control/TextureButton" to="." method="_on_texture_button_toggled"]
 [connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]

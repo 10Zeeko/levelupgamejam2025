@@ -106,6 +106,7 @@ func start_dash():
 	
 	dash_audio_player.stream = dash_audios_streams[randi_range(0, dash_audios_streams.size()-1)]
 	dash_audio_player.play()
+	Globals.shake_for_time($"..", 15, 0.1)
 
 	# ignore objects on Layer 3 (bit 2)
 	collision_mask &= ~(1 << 2)
